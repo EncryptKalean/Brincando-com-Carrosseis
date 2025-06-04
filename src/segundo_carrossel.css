@@ -13,7 +13,7 @@
 
 .vitrine {
   margin: 0 auto;
-  border: 1px solid rgb(194, 194, 194);
+  /* border: 1px solid rgb(194, 194, 194); */
   width: 95%;
   height: 300px;
   overflow-x: hidden;
