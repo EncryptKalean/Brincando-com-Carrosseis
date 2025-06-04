@@ -9,6 +9,8 @@ funcionamento:
 - Carrossel de Comentários (Manual + Automático)
 - Carrossel Horizontal de Blocos (Automático e Responsivo)
 
+https://encryptkalean.github.io/Brincando-com-Carrosseis/
+
 💡 Este projeto não utiliza bibliotecas externas como jQuery ou frameworks — é tudo na mão, só com Vanilla JS.
 
 # 🧠 Como Funciona
