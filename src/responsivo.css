@@ -1,0 +1,29 @@
+@media screen and (max-width: 1100px) {
+  /* Primeiro Carrossel */
+
+  .container {
+    height: 400px;
+  }
+
+  .container .container-single {
+    transform: translateX(10%) translateY(-45%);
+  }
+
+  /* Segundo Carrossel */
+
+  :root {
+    --quantidade_exposta: 3;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  :root {
+    --quantidade_exposta: 2;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  :root {
+    --quantidade_exposta: 1;
+  }
+}

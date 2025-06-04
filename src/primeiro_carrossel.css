@@ -1,0 +1,38 @@
+.primeiro_carrossel {
+  background-color: #ccc;
+  padding: 2%;
+}
+
+.container {
+  min-height: 300px;
+  align-content: center;
+  background-color: aliceblue;
+  border-radius: 20px;
+}
+
+.container .container-single {
+  position: absolute;
+  text-align: center;
+  padding: 30px;
+  width: 80%;
+  opacity: 0;
+  transition: opacity 1s;
+  transform: translateX(10%) translateY(-30%);
+}
+
+.bullets {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bullet-single {
+  color: white;
+  background-color: blue;
+  text-align: center;
+  font-size: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0 8px;
+  cursor: pointer;
+}

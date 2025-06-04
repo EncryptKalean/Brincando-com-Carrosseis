@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/geral.css" />
+    <link rel="stylesheet" href="src/primeiro_carrossel.css" />
+    <link rel="stylesheet" href="src/segundo_carrossel.css" />
+    <link rel="stylesheet" href="src/responsivo.css">
+    <title>Kauan Leandro</title>
+  </head>
+  <body>
+    <section class="primeiro_carrossel">
+      <p>
+        Este é um carrossel de depoimentos. Ele alterna automaticamente entre os comentários a cada 5 segundos, mas também permite navegação manual usando os botões laterais. Quando o usuário interage, a rotação automática é pausada por 15 segundos e as bordas ficam vermelhas para sinalizar que está no modo manual
+      </p>
+      <div class="container">
+        <div class="comentarios">
+          <div class="container-single" style="opacity: 1">
+            <div>
+              <h1>Cliente Nome 1</h1>
+              <br>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
+                ducimus, est praesentium voluptas obcaecati illum nulla tenetur
+                quibusdam. Repudiandae rerum dicta dolores animi consequuntur
+                culpa eaque labore assumenda nam quidem.
+              </p>
+            </div>
+          </div>
+          <div class="container-single">
+            <div>
+              <h1>Cliente Nome 2</h1>
+              <br>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit
+                aspernatur nisi facere fugiat animi odio distinctio suscipit
+                provident architecto veritatis ducimus rerum, incidunt possimus
+                id similique eaque, adipisci officia iure! Lorem ipsum dolor,
+                sit amet consectetur adipisicing elit. Rerum incidunt officiis
+                minima! Unde, similique corrupti maiores vitae officiis, ad
+                repellat pariatur delectus dicta exercitationem maxime! Quaerat
+                atque autem aperiam voluptatum!
+              </p>
+            </div>
+          </div>
+          <div class="container-single">
+            <div>
+              <h1>Cliente Nome 3</h1>
+              <br>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Doloremque id exercitationem assumenda voluptatum quia
+                recusandae qui et, ab iste illo porro nisi, aspernatur nobis
+                molestiae nulla doloribus, obcaecati consectetur explicabo.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="bullets">
+          <div class="bullet-single" id="prev">&lt;</div>
+          <div class="bullet-single" id="prox">&gt;</div>
+        </div>
+    </section>
+
+    <section class="segundo_carrossel">
+      <p>
+        Este é um carrossel horizontal que mostra uma série de blocos numerados. Ele se move automaticamente a cada 3 segundos e se ajusta ao tamanho da tela, mostrando entre 1 e 5 blocos por vez, dependendo da largura do dispositivo.
+      </p>
+      <div class="vitrine">
+        <div class="trilho">
+          <div class="bloco">1</div>
+          <div class="bloco">2</div>
+          <div class="bloco">3</div>
+          <div class="bloco">4</div>
+          <div class="bloco">5</div>
+          <div class="bloco">6</div>
+          <div class="bloco">7</div>
+          <div class="bloco">8</div>
+          <div class="bloco">9</div>
+          <div class="bloco">10</div>
+        </div>
+      </div>
+    </section>
+
+    <script src="src/primeiro_carrossel.js"></script>
+    <script src="src/segundo_carrossel.js"></script>
+  </body>
+</html>
