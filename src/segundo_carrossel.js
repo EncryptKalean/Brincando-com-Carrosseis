@@ -45,9 +45,10 @@ function carrossel() {
     // Aplica a nova posição ao trilho
     trilho.style.setProperty('transform', `translateX(${translateX}px)`);
 
-    console.log("progresso: " + progresso_carrossel);
-    console.log("casa por giro: " + casa_por_giro);
-    console.log("quantidade exposta: " + quantidade_exposta);
+    // console.log("progresso: " + progresso_carrossel);
+    // console.log("casa por giro: " + casa_por_giro);
+    // console.log("quantidade exposta: " + quantidade_exposta);
 };
+
 
 setInterval(() => { carrossel() }, velocidade * 1000);
