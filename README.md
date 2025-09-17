@@ -22,21 +22,10 @@ https://encryptkalean.github.io/Brincando-com-Carrosseis/
 - Reinicia o temporizador quando o usuário interage.
 
 2. Carrossel Horizontal de Blocos
-- Exibe uma "vitrine" com blocos numerados.
+- Mostra uma sequência de blocos numerados em rotação horizontal.
 - Os blocos rolam horizontalmente automaticamente a cada 3 segundos.
-- Usa :root e media queries para alterar a quantidade de blocos visíveis com base na largura da tela.
-- Imagens de fundo usam o placeholder https://placehold.co/200x250.
-
-# 📱 Responsividade
-
-Utiliza media queries para ajustar a quantidade de blocos expostos no segundo carrossel:
-
-| Largura da Tela | Blocos Expostos |
-| --------------- | --------------- |
-| > 1100px        | 5               |
-| <= 1100px       | 3               |
-| <= 800px        | 2               |
-| <= 400px        | 1               |
+- A quantidade de blocos visíveis por vez, o número de blocos que giram a cada rotação e o tempo de transição são configurados via CSS.
+- Utiliza variáveis CSS definidas em :root e media queries para adaptar o layout à largura da tela.
 
 # ⚙️ Tecnologias Utilizadas
 
