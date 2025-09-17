@@ -5,6 +5,8 @@
 }
 
 :root {
+  /* OBS: Se alguma variável no :root for alterada, será necessário atualizar a página para aplicar as mudanças corretamente. */
+
   /* Quantas casas vão aparecer na vitrine */
   --quantidade_exposta: 4;
 
@@ -47,3 +49,4 @@
   align-items: center;
   justify-content: center;
 }
+
