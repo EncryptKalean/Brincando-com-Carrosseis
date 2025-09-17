@@ -1,64 +1,53 @@
-const vitrine = document.querySelector('.vitrine').style
+const blocos = document.querySelectorAll('.bloco');
+const trilho = document.getElementById('trilho');
+const styles_trilho = window.getComputedStyle(trilho);
+const tamanho_do_trilho = +styles_trilho.getPropertyValue('width').split('px')[0];
 
-const trilho = document.querySelector(".trilho");
-// Pega o trilo
+// Pega o tamanho dos blocos de acordo com o tamanho do trilho
+const tamanho_bloco = tamanho_do_trilho / blocos.length;
 
-const bloco = document.querySelector(".bloco").offsetWidth;
-// Pega o tamanho dos blocos (sem contar com a margin)
+/* Quantas casas vão aparecer na vitrine */
+const quantidade_exposta = getComputedStyle(document.documentElement).getPropertyValue('--quantidade_exposta').trim();
 
-let quantidade_exposta = getComputedStyle(document.body).getPropertyValue('--quantidade_exposta');
+/* Tempo que o carrossel demora para trocar a casa */
+const velocidade = getComputedStyle(document.documentElement).getPropertyValue('--tempo_carrossel');
 
-const marginLeft = parseInt(
-    getComputedStyle(document.querySelector(".bloco"))
-    .marginLeft
-    .split("px")[0]
-);
-const marginRight = parseInt(
-    getComputedStyle(document.querySelector(".bloco"))
-    .marginRight
-    .split("px")[0]
-);
-const margin = marginRight + marginLeft;
-// Pega as margins e junta elas (left + right)
+/* Quantas casas vão ser puladas por giro */
+const valorCss = +getComputedStyle(document.documentElement).getPropertyValue('--casas_por_giro');
+const casa_por_giro = valorCss > quantidade_exposta ? quantidade_exposta : valorCss;
 
-const inicio = -20;
-// Define o ponto zero do trilho
+let progresso_carrossel = blocos.length;
 
-let limite = trilho.clientWidth - bloco * quantidade_exposta - bloco;
-// Pega o tamanho do trilho,
-// diminui pelo tamanho do bloco vezes a quantidade de blocos que aparecem por vez + 1.
-// Por que fiz assim? Desse jeito o carrossel funciona diferentes tamanhos de telas
+function carrossel() {
+    // Pega o valor de translateX do trilho
+    const matrix = new DOMMatrixReadOnly(styles_trilho.transform);
+    let translateX = +matrix.m41;
 
-trilho.style.transform = `translateX(${inicio}px)`;
-// Esse é o "Start" do sistem, só começa depois que essa linha roda
+    // Atualiza o progresso do carrossel, subtraindo as casas percorridas
+    progresso_carrossel -= casa_por_giro;
 
-
-vitrine.maxWidth = `${bloco * quantidade_exposta + bloco - margin}px`
-// O tamanho da vitrine é alterado de acordo com a quantidade de blocos expostos
-
-setInterval(() => {
-    quantidade_exposta = getComputedStyle(document.body).getPropertyValue('--quantidade_exposta');
-    // Pega o valor atual da quantidade de itens expostos
-
-    limite = trilho.clientWidth - bloco * quantidade_exposta - bloco;
-    // Atualiza os valores de limite, para o trilho saber até onde ele pode ir (É pra evitar problemas no redisionamento da tela)
-    
-    vitrine.maxWidth = `${bloco * quantidade_exposta + bloco - margin}px`
-    // Atualiza o tamanho da vitrine para se encaixar na tela
-
-    let x = trilho.style.transform
-    .split("translateX(")[1]
-    .split("px)")[0];
-    // Pega a posição atual do trilho, e a movimentação funciona em cima desse valor
-
-    if (x < -limite) {
-        // Pega o valor limite e deixa ele em negativo
-        trilho.style.transform = `translateX(${inicio}px)`;
-        // Volta pro ponto zero
-    } else {
-        trilho.style.transform = `translateX(${x - bloco - margin}px)`;
-        // Pega a posição atual do trilho e diminui pelo tamanho do bloco e das margins laterais
+    // Se não houver mais casas para percorrer, reinicia o carrossel
+    if (progresso_carrossel <= 0) {
+        progresso_carrossel = blocos.length;
+        translateX = 0;
     }
 
-    console.log(`limite: ${limite}; atual: ${x}`)
-}, 3000);
+    // Se o número de casas restantes for menor que o valor de casas por giro,
+    // desacelera o carrossel proporcionalmente ao tamanho dos blocos
+    else if (progresso_carrossel <= quantidade_exposta) {
+        if (quantidade_exposta > casa_por_giro) progresso_carrossel = quantidade_exposta - casa_por_giro;
+        translateX -= tamanho_bloco * progresso_carrossel;
+    }
+
+    // Caso contrário, continua normalmente com o deslocamento padrão
+    else translateX -= tamanho_bloco * casa_por_giro;
+
+    // Aplica a nova posição ao trilho
+    trilho.style.setProperty('transform', `translateX(${translateX}px)`);
+
+    console.log("progresso: " + progresso_carrossel);
+    console.log("casa por giro: " + casa_por_giro);
+    console.log("quantidade exposta: " + quantidade_exposta);
+};
+
+setInterval(() => { carrossel() }, velocidade * 1000);

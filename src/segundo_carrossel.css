@@ -1,9 +1,20 @@
-:root{
-  --quantidade_exposta: 5;
-  /* 
-    Serve para o javascript saber quantos blocos devem set expostos por vez.
-    Isso altera o tamanho maximo da vitrine e até onde o trilho pode ir.
-  */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Quantas casas vão aparecer na vitrine */
+  --quantidade_exposta: 4;
+
+  /* Quantas casas vão ser puladas por giro */
+  --casas_por_giro: 2;
+
+  --tamanho_bloco: 200px;
+
+  /* Tempo que o carrossel demora para trocar a casa (em segundos) */
+  --tempo_carrossel: 2;
 }
 
 .segundo_carrossel {
@@ -11,27 +22,28 @@
   border-top: 5px solid black;
 }
 
-.vitrine {
-  margin: 0 auto;
-  /* border: 1px solid rgb(194, 194, 194); */
-  width: 95%;
-  height: 300px;
+#vitrine {
+  margin: 10% auto;
   overflow-x: hidden;
-  padding: 0 10px;
+  width: calc((var(--tamanho_bloco) + 15px) * var(--quantidade_exposta));
+  align-content: center;
+  border: 1px solid red;
 }
 
-.trilho {
+#trilho {
   width: max-content;
-  height: 100%;
   display: flex;
-  align-items: center;
   transition: transform 1s;
 }
 
 .bloco {
-  background: url("https://placehold.co/200x250") center / contain no-repeat;
-  margin: 0 20px;
-  width: 200px;
-  height: 250px;
+  margin-right: 20px;
+  width: var(--tamanho_bloco);
+  aspect-ratio: 3/4;
   border: 1px solid black;
+  color: black;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
